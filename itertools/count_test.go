@@ -5,32 +5,21 @@ import (
 	"testing"
 
 	. "github.com/Eyal-Shalev/go-tools/itertools"
-	"github.com/stretchr/testify/assert"
 )
 
 func FuzzCount(f *testing.F) {
-	f.Fuzz(func(t *testing.T, countStart, countStep, takeEnd int) {
-		if countStep == 0 {
-			defer func() {
-				r := recover()
-				assert.NotNilf(t, r, "expected panic on step=0")
-			}()
-		}
-		seq := Take(Count(
-			WithStart(countStart),
-			WithStep(countStep)),
-			WithPredicate(func(v int) bool { return v < takeEnd }))
+	f.Fuzz(func(t *testing.T, takeEnd int) {
+		seq := TakeWhile(Count[int](), func(v int) bool { return v < takeEnd }, false)
 		for range seq {
 		}
 	})
 }
 
 func ExampleCount() {
-	seq := Take(Count(WithStart(-1), WithStep(1)), WithPredicate(func(v int) bool { return v < 2 }))
+	seq := TakeWhile(Count[int](), func(v int) bool { return v < 2 }, false)
 	for val := range seq {
 		fmt.Println(val)
 	}
-	// Output: -1
-	// 0
+	// Output: 0
 	// 1
 }
