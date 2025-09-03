@@ -1,12 +1,13 @@
 package itertools_test
 
 import (
-	"github.com/Eyal-Shalev/itertools-go"
-	"github.com/Eyal-Shalev/itertools-go/internal"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"slices"
 	"testing"
+
+	"github.com/Eyal-Shalev/go-tools/functools"
+	"github.com/Eyal-Shalev/go-tools/itertools"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestGroupBy(t *testing.T) {
@@ -23,12 +24,12 @@ func TestGroupBy(t *testing.T) {
 		{"empty", args{}, nil},
 		{
 			name: "single_group",
-			args: args{[]string{"item", "item", "item"}, internal.Identity[string]},
+			args: args{[]string{"item", "item", "item"}, functools.Identity[string]},
 			want: []itertools.Entry[string, []string]{{"item", []string{"item", "item", "item"}}},
 		},
 		{
 			name: "many_groups",
-			args: args{[]string{"item1", "item1", "item2", "item3", "item3"}, internal.Identity[string]},
+			args: args{[]string{"item1", "item1", "item2", "item3", "item3"}, functools.Identity[string]},
 			want: []itertools.Entry[string, []string]{
 				{"item1", []string{"item1", "item1"}},
 				{"item2", []string{"item2"}},
@@ -37,7 +38,7 @@ func TestGroupBy(t *testing.T) {
 		},
 		{
 			name: "unsorted_groups",
-			args: args{[]string{"item1", "item2", "item1"}, internal.Identity[string]},
+			args: args{[]string{"item1", "item2", "item1"}, functools.Identity[string]},
 			want: []itertools.Entry[string, []string]{
 				{"item1", []string{"item1"}},
 				{"item2", []string{"item2"}},

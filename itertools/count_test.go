@@ -2,9 +2,10 @@ package itertools_test
 
 import (
 	"fmt"
-	. "github.com/Eyal-Shalev/itertools-go"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	. "github.com/Eyal-Shalev/go-tools/itertools"
+	"github.com/stretchr/testify/assert"
 )
 
 func FuzzCount(f *testing.F) {

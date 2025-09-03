@@ -1,6 +1,10 @@
 package itertools
 
-import "iter"
+import (
+	"iter"
+
+	"github.com/Eyal-Shalev/go-tools/functools"
+)
 
 func Map[V, T any](seq iter.Seq[V], applyFn func(V) T) iter.Seq[T] {
 	return func(yield func(T) bool) {
@@ -20,4 +24,12 @@ func Map2[K, V, KOut, VOut any](seq iter.Seq2[K, V], applyFn func(K, V) (KOut, V
 			}
 		}
 	}
+}
+
+func ToAny[T any](s iter.Seq[T]) iter.Seq[any] {
+	return Map(s, functools.ToAny)
+}
+
+func ToAny2[K, V any](s iter.Seq2[K, V]) iter.Seq2[K, any] {
+	return Map2(s, functools.ToAny2)
 }

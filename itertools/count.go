@@ -1,13 +1,14 @@
 package itertools
 
 import (
-	"github.com/Eyal-Shalev/itertools-go/internal"
-	"golang.org/x/exp/constraints"
 	"iter"
+
+	"github.com/Eyal-Shalev/go-tools/mathtools"
+	"golang.org/x/exp/constraints"
 )
 
 func Count[N constraints.Integer](optFns ...countOption[N]) iter.Seq[N] {
-	maxVal := internal.MaxN[N]()
+	maxVal := mathtools.MaxN[N]()
 	options := countOptions[N]{
 		start: 0,
 		step:  1,
@@ -30,14 +31,14 @@ func Count[N constraints.Integer](optFns ...countOption[N]) iter.Seq[N] {
 }
 
 //goland:noinspection GoExportedFuncWithUnexportedType
-func WithStart[N internal.Rational](start N) countOption[N] {
+func WithStart[N mathtools.Rational](start N) countOption[N] {
 	return func(options *countOptions[N]) {
 		options.start = start
 	}
 }
 
 //goland:noinspection GoExportedFuncWithUnexportedType
-func WithStep[N internal.Rational](step N) countOption[N] {
+func WithStep[N mathtools.Rational](step N) countOption[N] {
 	if step == 0 {
 		panic("step cannot be 0")
 	}
@@ -46,9 +47,9 @@ func WithStep[N internal.Rational](step N) countOption[N] {
 	}
 }
 
-type countOption[N internal.Rational] func(options *countOptions[N])
+type countOption[N mathtools.Rational] func(options *countOptions[N])
 
-type countOptions[N internal.Rational] struct {
+type countOptions[N mathtools.Rational] struct {
 	start N
 	step  N
 	end   N
