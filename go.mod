@@ -1,4 +1,4 @@
-module github.com/Eyal-Shalev/itertools-go
+module github.com/Eyal-Shalev/go-tools
 
 go 1.24.1
 

@@ -1,8 +1,9 @@
-package internal
+package mathtools
 
 import (
-	"golang.org/x/exp/constraints"
 	"math"
+
+	"golang.org/x/exp/constraints"
 )
 
 type Rational interface {

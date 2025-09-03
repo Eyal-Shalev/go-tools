@@ -12,10 +12,10 @@ func Map[V, T any](seq iter.Seq[V], applyFn func(V) T) iter.Seq[T] {
 	}
 }
 
-func Map2[K, V, T any](seq iter.Seq2[K, V], applyFn func(V) T) iter.Seq2[K, T] {
-	return func(yield func(K, T) bool) {
+func Map2[K, V, KOut, VOut any](seq iter.Seq2[K, V], applyFn func(K, V) (KOut, VOut)) iter.Seq2[KOut, VOut] {
+	return func(yield func(KOut, VOut) bool) {
 		for k, v := range seq {
-			if !yield(k, applyFn(v)) {
+			if !yield(applyFn(k, v)) {
 				return
 			}
 		}
