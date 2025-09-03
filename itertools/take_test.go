@@ -41,7 +41,7 @@ func TestTakeN(t *testing.T) {
 		{name: "Empty Sequence", args: args{seq: ToAny(Count[int]()), n: 0}, want: nil},
 		{name: "Sequence [0, 5)", args: args{seq: ToAny(Count[int]()), n: 5}, want: []any{0, 1, 2, 3, 4}},
 		{name: "Sequence of strings", args: args{seq: slices.Values([]any{"a", "b", "c"}), n: 2}, want: []any{"a", "b"}},
-		{name: "Sequence things", args: args{seq: slices.Values([]any{-4, "foo", 5.4, math.Pi, "boom"}), n: 5}, want: []any{-4, "foo", 5.4, math.Pi}},
+		{name: "Sequence things", args: args{seq: slices.Values([]any{-4, "foo", 5.4, math.Pi, "boom"}), n: 4}, want: []any{-4, "foo", 5.4, math.Pi}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
