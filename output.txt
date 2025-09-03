@@ -1,0 +1,62 @@
+?   	github.com/Eyal-Shalev/go-tools/functools	[no test files]
+-test.shuffle 1756924903029138000
+=== RUN   TestTakeN
+=== RUN   TestTakeN/Negative_n
+=== RUN   TestTakeN/Empty_Sequence
+=== RUN   TestTakeN/Sequence_[0,_5)
+=== RUN   TestTakeN/Sequence_of_strings
+=== RUN   TestTakeN/Sequence_things
+    take_test.go:48: 
+        	Error Trace:	/Users/eyalsh/workspace/Eyal-Shalev/go-tools/itertools/take_test.go:48
+        	Error:      	Not equal: 
+        	            	expected: []interface {}{-4, "foo", 5.4, 3.141592653589793}
+        	            	actual  : []interface {}{-4, "foo", 5.4, 3.141592653589793, "boom"}
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1,2 +1,2 @@
+        	            	-([]interface {}) (len=4) {
+        	            	+([]interface {}) (len=5) {
+        	            	  (int) -4,
+        	            	@@ -4,3 +4,4 @@
+        	            	  (float64) 5.4,
+        	            	- (float64) 3.141592653589793
+        	            	+ (float64) 3.141592653589793,
+        	            	+ (string) (len=4) "boom"
+        	            	 }
+        	Test:       	TestTakeN/Sequence_things
+--- FAIL: TestTakeN (0.00s)
+    --- PASS: TestTakeN/Negative_n (0.00s)
+    --- PASS: TestTakeN/Empty_Sequence (0.00s)
+    --- PASS: TestTakeN/Sequence_[0,_5) (0.00s)
+    --- PASS: TestTakeN/Sequence_of_strings (0.00s)
+    --- FAIL: TestTakeN/Sequence_things (0.00s)
+=== RUN   TestGroupBy
+=== RUN   TestGroupBy/empty
+=== RUN   TestGroupBy/single_group
+=== RUN   TestGroupBy/many_groups
+=== RUN   TestGroupBy/unsorted_groups
+--- PASS: TestGroupBy (0.00s)
+    --- PASS: TestGroupBy/empty (0.00s)
+    --- PASS: TestGroupBy/single_group (0.00s)
+    --- PASS: TestGroupBy/many_groups (0.00s)
+    --- PASS: TestGroupBy/unsorted_groups (0.00s)
+=== RUN   FuzzCount
+--- PASS: FuzzCount (0.00s)
+=== RUN   FuzzTakeWhile
+--- PASS: FuzzTakeWhile (0.00s)
+=== RUN   FuzzTakeN
+--- PASS: FuzzTakeN (0.00s)
+=== RUN   ExampleCount
+--- PASS: ExampleCount (0.00s)
+FAIL
+FAIL	github.com/Eyal-Shalev/go-tools/itertools	0.181s
+?   	github.com/Eyal-Shalev/go-tools/maptools	[no test files]
+-test.shuffle 1756924903143039000
+=== RUN   TestMaxN
+--- PASS: TestMaxN (0.00s)
+PASS
+ok  	github.com/Eyal-Shalev/go-tools/mathtools	1.290s
+?   	github.com/Eyal-Shalev/go-tools/slicetools	[no test files]
+FAIL
