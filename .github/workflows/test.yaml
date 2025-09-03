@@ -37,6 +37,7 @@ jobs:
         with:
           go-version-file: 'go.mod'
       - run: |
+          go mod download
           if ! (go test -v -race -vet="" -shuffle="on" ./... 2>&1 | tee output.txt); then
             echo 'Tests failed:' >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
